@@ -4,8 +4,10 @@ class PrintType extends Component {
   render() {
     return (
       <React.Fragment>
-        <select name='printtype'>
-          <option value='print type'>Print Type</option>
+        <select
+          onChange={event => this.props.printFilter(event.target.value)}
+          name='printtype'
+        >
           <option value='all'>All</option>
           <option value='books'>Books</option>
           <option value='magazines'>Magazines</option>

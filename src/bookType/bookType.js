@@ -4,9 +4,11 @@ class BookType extends Component {
   render() {
     return (
       <React.Fragment>
-        <select name='booktype'>
-          <option value='book type'>Book Type</option>
-          <option value='No Filter'>No Filter</option>
+        <select
+          onChange={event => this.props.bookFilter(event.target.value)}
+          name='booktype'
+        >
+          <option value=''>No Filter</option>
           <option value='ebooks'>ebooks</option>
           <option value='free-ebooks'>free-ebooks</option>
           <option value='full'>full</option>
