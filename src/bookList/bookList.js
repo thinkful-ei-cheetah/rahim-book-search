@@ -3,7 +3,14 @@ import Book from '../book/book';
 
 class BookList extends Component {
   render() {
-    return <Book />;
+    const booklist = this.props.books.map((element, index) => {
+      return <Book books={element} key={index} />;
+    });
+    return (
+      <section>
+        <ul>{booklist}</ul>
+      </section>
+    );
   }
 }
 

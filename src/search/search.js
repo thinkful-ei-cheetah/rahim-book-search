@@ -24,11 +24,36 @@ class Search extends Component {
   bookSearch = event => {
     event.preventDefault();
     //create url with api key, search term, and filters with custom method.
-    createURL(this.state.search, this.state.printType, this.state.bookType);
+    const url = createURL(
+      this.state.search,
+      this.state.printType,
+      this.state.bookType
+    );
     //call fetch with data
+    fetch(url, {
+      method: 'GET',
+      apiKey: 'AIzaSyC6agItGuK0kT0qzGZxhr5P8_M0CCvKVPk',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data =>
+        data.items.map(items => {
+          const book = {
+            title: items.volumeInfo.title,
+            author: items.volumeInfo.authors,
+            image: items.volumeInfo.imageLinks.smallThumbnail,
+            price: items.saleInfo.saleability,
+            description: items.volumeInfo.description
+          };
+
+          this.setState({ books: [...this.state.books, book] });
+          return book;
+        })
+      );
     //return books from api to state
   };
-
   bookTypeFilter = filter => {
     this.setState({ bookType: filter });
   };
@@ -57,7 +82,7 @@ class Search extends Component {
           <PrintType printFilter={filter => this.printTypeFilter(filter)} />
           <BookType bookFilter={filter => this.bookTypeFilter(filter)} />
         </section>
-        <BookList book={this.state.books} />
+        <BookList books={this.state.books} />
       </React.Fragment>
     );
   }

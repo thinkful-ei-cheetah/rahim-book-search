@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 class Book extends Component {
   render() {
-    return <li>hello</li>;
+    return (
+      <li>
+        <img src={this.props.books.image} alt='hello' />
+        <h2>{this.props.books.title}</h2>
+        <h3>{this.props.books.author}</h3>
+        <h2>{this.props.books.description}</h2>
+      </li>
+    );
   }
 }
 
