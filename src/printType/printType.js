@@ -4,8 +4,8 @@ class PrintType extends Component {
   render() {
     return (
       <React.Fragment>
-        <label htmlFor='printType'>Print Type:</label>
-        <select name='printType'>
+        <select name='printtype'>
+          <option value='print type'>Print Type</option>
           <option value='all'>All</option>
           <option value='books'>Books</option>
           <option value='magazines'>Magazines</option>

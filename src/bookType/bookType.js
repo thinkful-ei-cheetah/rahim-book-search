@@ -4,8 +4,8 @@ class BookType extends Component {
   render() {
     return (
       <React.Fragment>
-        <label htmlFor='booktype'>Book Type:</label>
         <select name='booktype'>
+          <option value='book type'>Book Type</option>
           <option value='No Filter'>No Filter</option>
           <option value='ebooks'>ebooks</option>
           <option value='free-ebooks'>free-ebooks</option>
